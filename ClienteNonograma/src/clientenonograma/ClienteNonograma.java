@@ -18,7 +18,6 @@ public class ClienteNonograma {
         // prueba para github
         //comentario puesto desde github
         System.out.println("Prueba");
-        int a=2;
     }
     
 }
