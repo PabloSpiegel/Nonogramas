@@ -17,6 +17,7 @@ public class ClienteNonograma {
     public static void main(String[] args) {
         // prueba para github
         //comentario puesto desde github
+        int a=2;
     }
     
 }
