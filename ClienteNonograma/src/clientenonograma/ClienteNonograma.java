@@ -18,7 +18,7 @@ public class ClienteNonograma {
         // prueba para github
         //comentario puesto desde github
         int a=2;
-        int mivariable;
+        int mivariable=3;
     }
     
 }
