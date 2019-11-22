@@ -19,6 +19,7 @@ public class ClienteNonograma {
         //comentario puesto desde github
         int a=2;
         int mivariable=3;
+        //comentario puesto después de clonar
     }
     
 }
