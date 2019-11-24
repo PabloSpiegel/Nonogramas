@@ -16,5 +16,16 @@ public enum Casilla {
     VACIA,
     PINTADA,
     TACHADA;
+    public static Casilla fromInt(int i){
+        switch(i){
+            case 0:
+                return Casilla.VACIA;
+            case 1:
+                return Casilla.PINTADA;
+            case 2:
+                return Casilla.TACHADA;
+        }
+        return Casilla.VACIA;
+    }
+    }
             
-}

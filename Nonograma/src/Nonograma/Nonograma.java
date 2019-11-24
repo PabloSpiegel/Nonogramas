@@ -5,6 +5,9 @@
  */
 package Nonograma;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.ArrayList;
 
 /**
@@ -153,10 +156,31 @@ public class Nonograma {
         }
     }
     
+    public static Nonograma leerDeBufferedReader(BufferedReader lector) throws IOException{
+        ArrayList<ArrayList<Casilla>> tablero= new ArrayList();
+        ArrayList<Casilla> fila;
+        String linea;
+        while((linea=lector.readLine())!=null| linea.length()>2){
+        fila=new ArrayList();
+          for(int i=0;i<linea.length();++i){
+            if(linea.charAt(i)!='{'|| linea.charAt(i)!=',' || linea.charAt(i)!='}'){
+                
+                System.out.print(linea.charAt(i));
+                int entero= Integer.parseInt(linea.substring(i,i+1));
+                Casilla nuevaCasilla=Casilla.fromInt(entero);
+                fila.add(nuevaCasilla);
+            }
+            
+            
+          }
+            tablero.add(fila);
+            
+        }
+        
+        Nonograma resultado=new Nonograma(tablero);
+        return resultado;
+        
+    }
     
-    
-    
-    
-    
-    
-}
+   
+    }
