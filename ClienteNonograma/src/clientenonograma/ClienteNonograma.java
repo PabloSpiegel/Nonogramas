@@ -18,14 +18,10 @@ public class ClienteNonograma {
     /**
      * @param args the command line arguments
      */
-    public static void preet(Integer x){
-        x=34;
-    }
+
     public static void main(String[] args) {
         // prueba para github
         //comentario puesto desde github
-        Integer h=2;
-        preet(h);
         ArrayList<ArrayList<Casilla>> prueba=new ArrayList();
         ArrayList<Casilla> p=new ArrayList();
         p.add(Casilla.PINTADA);

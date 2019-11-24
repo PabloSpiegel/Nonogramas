@@ -12,25 +12,25 @@ import java.util.ArrayList;
  * @author Pablo
  */
 public class Nonograma {
-     int NumFilas;
-     int NumColumnas;
+     int numFilas;
+     int numColumnas;
     public final ArrayList<ArrayList<Integer>> PistasHorizontales;
     public final ArrayList<ArrayList<Integer>> PistasVerticales;
-    ArrayList<ArrayList<Casilla>> Tablero;
+    ArrayList<ArrayList<Casilla>> tablero;
     
     public Nonograma(ArrayList<ArrayList<Casilla>> tablero){
         
-        Tablero=tablero;
-        NumFilas=tablero.size();
-        NumColumnas=tablero.get(0).size();
+        this.tablero=tablero;
+        numFilas=tablero.size();
+        numColumnas=tablero.get(0).size();
         ArrayList<ArrayList<Integer>> pistasV=new ArrayList();
         ArrayList<ArrayList<Integer>> pistasH=new ArrayList();
         //Calculamos las pistas de las filas
-        for(int i=0; i<NumFilas;++i){
+        for(int i=0; i<numFilas;++i){
            ArrayList<Integer> pistas=new ArrayList();
            Integer j=0;
            
-                while(j<NumColumnas){
+                while(j<numColumnas){
                     j=contarGrupoHorizontal(i,j,pistas);
                     
                 }
@@ -43,11 +43,11 @@ public class Nonograma {
         PistasHorizontales=pistasH;
         
         //Calculamos las pistas de las columas
-        for(int j=0; j<NumColumnas;++j){
+        for(int j=0; j<numColumnas;++j){
            ArrayList<Integer> pistas=new ArrayList();
            Integer i=0;
            
-                while(i<NumFilas){
+                while(i<numFilas){
                     i=contarGrupoVertical(i,j,pistas);
                     
                 }
@@ -68,7 +68,7 @@ public class Nonograma {
     private int contarGrupoHorizontal(Integer i, Integer j, ArrayList<Integer> pistas){
         boolean hayGrupo=false, terminado=false;
         
-        for(;j<NumColumnas && !hayGrupo;++j){
+        for(;j<numColumnas && !hayGrupo;++j){
             if(getCasilla(i,j)==Casilla.PINTADA){
                 hayGrupo=true;
             }
@@ -77,7 +77,7 @@ public class Nonograma {
             return j;
         }
         int numPintadas=1;
-        for(;j<NumColumnas && !terminado;++j){
+        for(;j<numColumnas && !terminado;++j){
             if(getCasilla(i,j)==Casilla.PINTADA){
                 numPintadas++;
                 
@@ -94,7 +94,7 @@ public class Nonograma {
     private int contarGrupoVertical(Integer i, Integer j, ArrayList<Integer> pistas){
         boolean hayGrupo=false, terminado=false;
         
-        for(;i<NumFilas && !hayGrupo;++i){
+        for(;i<numFilas && !hayGrupo;++i){
             if(getCasilla(i,j)==Casilla.PINTADA){
                 hayGrupo=true;
             }
@@ -103,7 +103,7 @@ public class Nonograma {
             return i;
         }
         int numPintadas=1;
-        for(;i<NumFilas && !terminado;++i){
+        for(;i<numFilas && !terminado;++i){
             if(getCasilla(i,j)==Casilla.PINTADA){
                 numPintadas++;
                 
@@ -118,17 +118,39 @@ public class Nonograma {
     }
     
     public Casilla getCasilla(int x, int y){
-        return Tablero.get(x).get(y);
+        return tablero.get(x).get(y);
+    }
+    
+    public void setCasilla(int x, int y, Casilla c){
+        tablero.get(x).set(y,c);
+    }
+    
+    public int getNumFilas() {
+        return numFilas;
+    }
+
+    public int getNumColumnas() {
+        return numColumnas;
     }
     
     public String stringTablero(){
         String res= "[";
-        for(int i=0; i<NumFilas; ++i){
-        res+= Tablero.get(i).toString();
+        for(int i=0; i<numFilas; ++i){
+        res+= tablero.get(i).toString();
         res+="\n";
         }
         res+="]";
         return res;
+    }
+    
+    public void vaciarTablero(){
+        for(int i=0; i<numFilas;++i){
+            ArrayList<Casilla> c=tablero.get(i);
+            for(int j=0; j<numColumnas;++j){
+                c.set(j, Casilla.VACIA);
+                
+            }
+        }
     }
     
     
