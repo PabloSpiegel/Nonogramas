@@ -5,6 +5,10 @@
  */
 package clientenonograma;
 
+import Nonograma.Casilla;
+import Nonograma.Nonograma;
+import java.util.ArrayList;
+
 /**
  *
  * @author Pablo
@@ -14,11 +18,40 @@ public class ClienteNonograma {
     /**
      * @param args the command line arguments
      */
+    public static void preet(Integer x){
+        x=34;
+    }
     public static void main(String[] args) {
         // prueba para github
         //comentario puesto desde github
-        int a=2;
-        int mivariable=3;
+        Integer h=2;
+        preet(h);
+        ArrayList<ArrayList<Casilla>> prueba=new ArrayList();
+        ArrayList<Casilla> p=new ArrayList();
+        p.add(Casilla.PINTADA);
+        p.add(Casilla.PINTADA);
+        p.add(Casilla.PINTADA);
+        p.add(Casilla.VACIA);
+        p.add(Casilla.VACIA);
+        p.add(Casilla.PINTADA);
+        p.add(Casilla.PINTADA);
+        p.add(Casilla.VACIA);
+        p.add(Casilla.VACIA);
+        prueba.add((ArrayList<Casilla>)p.clone());
+                
+        prueba.add((ArrayList<Casilla>)p.clone());
+                p.set(1,Casilla.VACIA);
+        prueba.add((ArrayList<Casilla>)p.clone());
+                p.set(1,Casilla.VACIA);
+        prueba.add((ArrayList<Casilla>)p.clone());
+                p.set(1,Casilla.VACIA);
+        prueba.add((ArrayList<Casilla>)p.clone());
+        
+        Nonograma n=new Nonograma(prueba);
+        System.out.println(n.stringTablero());
+        System.out.println(n.PistasVerticales);
+        System.out.println(n.PistasHorizontales);
+        
         //comentario puesto después de clonar
     }
     
