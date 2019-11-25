@@ -160,21 +160,22 @@ public class Nonograma {
         ArrayList<ArrayList<Casilla>> tablero= new ArrayList();
         ArrayList<Casilla> fila;
         String linea;
-        while((linea=lector.readLine())!=null| linea.length()>2){
-        fila=new ArrayList();
-          for(int i=0;i<linea.length();++i){
-            if(linea.charAt(i)!='{'|| linea.charAt(i)!=',' || linea.charAt(i)!='}'){
-                
-                System.out.print(linea.charAt(i));
-                int entero= Integer.parseInt(linea.substring(i,i+1));
-                Casilla nuevaCasilla=Casilla.fromInt(entero);
-                fila.add(nuevaCasilla);
+        while((linea=lector.readLine())!=null){
+            if(linea.length()>2){
+                fila=new ArrayList();
+                for(int i=0;i<linea.length();++i){
+                    if(linea.charAt(i)!='{'&& linea.charAt(i)!=',' && linea.charAt(i)!='}'){
+                        System.out.print(linea.charAt(i));
+                        int entero= Integer.parseInt(linea.substring(i,i+1));
+                        Casilla nuevaCasilla=Casilla.fromInt(entero);
+                        fila.add(nuevaCasilla);
             }
             
             
           }
             tablero.add(fila);
             
+        }
         }
         
         Nonograma resultado=new Nonograma(tablero);
