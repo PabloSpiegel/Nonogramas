@@ -7,6 +7,8 @@ package clientenonograma;
 
 import Nonograma.Casilla;
 import Nonograma.Nonograma;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -22,33 +24,16 @@ public class ClienteNonograma {
     public static void main(String[] args) {
         // prueba para github
         //comentario puesto desde github
-        ArrayList<ArrayList<Casilla>> prueba=new ArrayList();
-        ArrayList<Casilla> p=new ArrayList();
-        p.add(Casilla.PINTADA);
-        p.add(Casilla.PINTADA);
-        p.add(Casilla.PINTADA);
-        p.add(Casilla.VACIA);
-        p.add(Casilla.VACIA);
-        p.add(Casilla.PINTADA);
-        p.add(Casilla.PINTADA);
-        p.add(Casilla.VACIA);
-        p.add(Casilla.VACIA);
-        prueba.add((ArrayList<Casilla>)p.clone());
-                
-        prueba.add((ArrayList<Casilla>)p.clone());
-                p.set(1,Casilla.VACIA);
-        prueba.add((ArrayList<Casilla>)p.clone());
-                p.set(1,Casilla.VACIA);
-        prueba.add((ArrayList<Casilla>)p.clone());
-                p.set(1,Casilla.VACIA);
-        prueba.add((ArrayList<Casilla>)p.clone());
+        PrintWriter outPrinter = null;
+        BufferedReader inReader = null;
         
-        Nonograma n=new Nonograma(prueba);
-        System.out.println(n.stringTablero());
-        System.out.println(n.PistasVerticales);
-        System.out.println(n.PistasHorizontales);
-        
-        //comentario puesto después de clonar
+        // Nombre del host donde se ejecuta el servidor:
+		String host="localhost";
+		// Puerto en el que espera el servidor:
+		int port=8989;
+		
+		// Socket para la conexión TCP
+		Socket socketServicio=null;
     }
     
 }
