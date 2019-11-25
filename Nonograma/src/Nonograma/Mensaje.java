@@ -12,10 +12,14 @@ import java.util.ArrayList;
  * @author Pablo
  */
 public class Mensaje {
-    String cabeza;
-    ArrayList<String> argumentos;
+    public String cabeza;
+    public ArrayList<String> argumentos;
     
     public Mensaje(String cabeza, ArrayList<String> argumentos){
+        
+    }
+    
+    public Mensaje(String linea){
         
     }
     
