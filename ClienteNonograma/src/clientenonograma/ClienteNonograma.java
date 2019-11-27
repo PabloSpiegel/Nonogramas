@@ -50,7 +50,7 @@ public class ClienteNonograma {
                         
                         interfaz = new InterfazConServidor(socketServicio);
                         
-                        interfaz.enviarMensaje()
+                        interfaz.enviarMensaje("Hola&");
                         
 			/*for(int i=0;i<bytesLeidos;i++){
 				System.out.print((char)buferRecepcion[i]);

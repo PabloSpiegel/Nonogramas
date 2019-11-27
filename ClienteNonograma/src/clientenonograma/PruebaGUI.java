@@ -34,21 +34,24 @@ public class PruebaGUI {
         p.add(Casilla.VACIA);
         p.add(Casilla.VACIA);
         prueba.add((ArrayList<Casilla>)p.clone());
-                
+               p.set(1,Casilla.VACIA); 
+        prueba.add((ArrayList<Casilla>)p.clone());
+                p.set(1,Casilla.PINTADA);
         prueba.add((ArrayList<Casilla>)p.clone());
                 p.set(1,Casilla.VACIA);
         prueba.add((ArrayList<Casilla>)p.clone());
-                p.set(1,Casilla.VACIA);
+                p.set(1,Casilla.PINTADA);
         prueba.add((ArrayList<Casilla>)p.clone());
-                p.set(1,Casilla.VACIA);
-        prueba.add((ArrayList<Casilla>)p.clone());
+        
         
         Nonograma n=new Nonograma(prueba);
         System.out.println(n.stringTablero());
-        System.out.println(n.PistasVerticales);
-        System.out.println(n.PistasHorizontales);
+        System.out.println("Pistas verticales: "+n.PistasVerticales);
+        System.out.println("Pistas horizontales: "+n.PistasHorizontales);
+        System.out.println("Filas: "+n.getNumFilas()+", columnas: "+n.getNumColumnas());
         n.vaciarTablero();
         GUICliente pruebaGUI = new GUICliente(n,"que baile con el perro");
+
         //comentario puesto después de clonar
     }
     
