@@ -25,16 +25,26 @@ public class Mensaje {
         cabeza = linea.substring(0,indice);
         int siguiente = linea.indexOf('|');
         argumentos = new ArrayList(); 
-     
+        String arg;
+        
+        
     while (siguiente != -1){
+        if(siguiente== -1){
+        arg= linea.substring(indice+1, linea.length());
+        argumentos.add(arg);
+        }
+        else{
+        argumentos.add(linea.substring(indice+1, siguiente));
+        }
+        
         indice = siguiente;
-        siguiente = linea.indexOf('|', indice);
-        argumentos.add(linea.substring(indice, siguiente));
+        siguiente = linea.indexOf('|', indice+1);
         
    }
-        String arg= linea.substring(siguiente, linea.length());
-        argumentos.add(arg);
-        
+        if(linea.length()-1>indice){
+            arg= linea.substring(indice+1, linea.length());
+            argumentos.add(arg);
+        }
     }
     
     public String toString(){

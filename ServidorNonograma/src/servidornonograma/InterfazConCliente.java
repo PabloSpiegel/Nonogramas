@@ -32,22 +32,21 @@ public class InterfazConCliente {
     
     }
     public void enviarRespuesta(Mensaje respuesta){
-       escritor.write(respuesta.toString());
+       enviarRespuesta(respuesta.toString());
     }
     public void enviarRespuesta(String linea){
-        escritor.write(linea);
+        escritor.write(linea+'\n');
+        escritor.flush();
     }
     public Mensaje esperarMensaje() throws IOException {
-       String linea = lector.readLine();
+        String linea = lector.readLine();
         
         return new Mensaje(linea);
     }
-    public Mensaje enviarMensaje(String linea) throws IOException{
+    public void enviarMensaje(String linea) throws IOException{
         String respuesta=null;
         escritor.write(linea);
-        respuesta = lector.readLine();
         
-        return new Mensaje(respuesta);
     }
     
 }

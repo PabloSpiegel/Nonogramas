@@ -6,6 +6,7 @@
 package clientenonograma;
 
 import Nonograma.Casilla;
+import Nonograma.Mensaje;
 import Nonograma.Nonograma;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class ClienteNonograma {
 	// Socket para la conexión TCP
 	Socket socketServicio=null;
         
+        System.out.println("iniciamos la conexion con el servidor");
         InterfazConServidor interfaz= null;
         try {
 			// Creamos un socket que se conecte a "hist" y "port":
@@ -47,10 +49,12 @@ public class ClienteNonograma {
 			//////////////////////////////////////////////////////			
 			socketServicio= new Socket (host, port);
 			//InputStream
-                        
                         interfaz = new InterfazConServidor(socketServicio);
                         
-                        interfaz.enviarMensaje("Hola&");
+                        System.out.println("Conexión con el servidor aceptada");
+                        
+                        Mensaje respuesta = interfaz.enviarMensaje("Hola&preet");
+                        System.out.println("Respuesta: del servidor: "+respuesta.cabeza);
                         
 			/*for(int i=0;i<bytesLeidos;i++){
 				System.out.print((char)buferRecepcion[i]);

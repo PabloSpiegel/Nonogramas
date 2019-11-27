@@ -15,13 +15,19 @@ import java.nio.file.Paths;
  * @author Pablo
  */
 public class NonogramaAlmacenado {
+    static int numAlmacenados=0;
     String nombre;
     int numFilas;
     int numColumnas;
     String dificultad;
     String archivo;
+    int id;
     
     public NonogramaAlmacenado(String s){
+        id=numAlmacenados;
+        numAlmacenados++;
+        
+        
         int delim=s.indexOf(',')+1;
         nombre= s.substring(0,s.indexOf(','));
         s.indexOf(',');

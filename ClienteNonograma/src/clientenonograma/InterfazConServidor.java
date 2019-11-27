@@ -30,17 +30,18 @@ public class InterfazConServidor {
     
     }
     public Mensaje enviarMensaje(Mensaje comando) throws IOException{
-        String respuesta=null;
-        escritor.write(comando.toString()+'\n');
-        respuesta = lector.readLine();
         
-        return new Mensaje(respuesta);
+        
+        return enviarMensaje(comando.toString());
     }
     public Mensaje enviarMensaje(String linea) throws IOException{
         String respuesta=null;
-        escritor.write(linea);
+        escritor.print(linea+'\n');
+        escritor.flush();
+        System.out.println("se entra en enviar mensaje con el mensaje: "+linea);
+        //escritor.flush();
         respuesta = lector.readLine();
-        
+        System.out.println();
         return new Mensaje(respuesta);
     }
     
