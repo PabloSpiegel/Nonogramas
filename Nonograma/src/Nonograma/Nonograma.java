@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Nonograma {
      int numFilas;
      int numColumnas;
-    public final ArrayList<ArrayList<Integer>> PistasHorizontales;
+    public final ArrayList<ArrayList<Integer>> PistasHorizontales;   
     public final ArrayList<ArrayList<Integer>> PistasVerticales;
     ArrayList<ArrayList<Casilla>> tablero;
     
@@ -134,6 +134,14 @@ public class Nonograma {
 
     public int getNumColumnas() {
         return numColumnas;
+    }
+    
+    public ArrayList<ArrayList<Integer>> getPistasHorizontales() {
+        return PistasHorizontales;
+    }
+
+    public ArrayList<ArrayList<Integer>> getPistasVerticales() {
+        return PistasVerticales;
     }
     
     public String stringTablero(){

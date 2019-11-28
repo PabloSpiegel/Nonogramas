@@ -5,46 +5,50 @@
  */
 package servidornonograma;
 
-import Nonograma.Nonograma;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /**
  *
  * @author Pablo
  */
-
 public class ServidorNonograma {
 
     /**
      * @param args the command line arguments
      */
-    static String archivoPrincipal="lista.lng";
-    static ArrayList<NonogramaAlmacenado> listaNonogramas=null;
-    public static void leerLista(String archivo){
-        listaNonogramas = new ArrayList();
-        try(BufferedReader lector=Files.newBufferedReader(Paths.get(archivo))){
-            String linea;
-            while((linea=lector.readLine())!=null&& linea.length()>2){
-                NonogramaAlmacenado nuevo= new NonogramaAlmacenado(linea);
-                listaNonogramas.add(nuevo);
-            }
-        } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
-        }
+    public static void main(String[] args) {
+        int port=8989;
+        ServerSocket socketServidor;
         
-        
-    }
-    public static void main(String[] args) throws IOException {
-        
-      
-      leerLista(archivoPrincipal);
-     Nonograma leido=listaNonogramas.get(0).leer();
-      
-      
-        
+        try{
+            
+            socketServidor = new ServerSocket(port);
+            do {
+				
+				// Aceptamos una nueva conexión con accept()
+				/////////////////////////////////////////////////
+				// socketServicio=... (completar)
+				//////////////////////////////////////////////////
+                                Socket socketServicio = null;
+                                try {
+                                    socketServicio = socketServidor.accept();
+                                } catch (IOException e) {
+                                    System.out.println("Error:   no   se   pudo   aceptar   la conexión solicitada");
+                                }
+                                
+				// Creamos un objeto de la clase ProcesadorYodafy, pasándole como 
+				// argumento el nuevo socket, para que realice el procesamiento
+				// Este esquema permite que se puedan usar hebras más fácilmente.
+				SesionNonograma sesion=new SesionNonograma(socketServicio);
+				sesion.empezarSesion();
+				
+			} while (true);
+        }catch (IOException e) {
+			System.err.println("Error al escuchar en el puerto "+port);
+                        
+		}
     }
     
 }
