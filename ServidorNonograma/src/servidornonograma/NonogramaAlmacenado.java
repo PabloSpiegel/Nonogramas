@@ -10,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author Pablo
@@ -22,12 +24,35 @@ public class NonogramaAlmacenado {
     String dificultad;
     String archivo;
     int id;
+    int intentosCasilla;
+    int intentosTablero;
     
     public NonogramaAlmacenado(String s){
         id=numAlmacenados;
         numAlmacenados++;
         
         
+        Scanner scanner= new Scanner(s);
+        scanner.useDelimiter(",");
+        nombre= scanner.nextLine();
+        numFilas=scanner.nextInt();
+        numColumnas=scanner.nextInt();
+        dificultad= scanner.nextLine();
+        archivo =  scanner.nextLine();
+        intentosCasilla=scanner.nextInt();
+        intentosTablero=scanner.nextInt();
+        
+        
+        
+    }
+    
+    public void NonogramaAlmacenadoAnt(String s){
+        id=numAlmacenados;
+        numAlmacenados++;
+        
+        
+        Scanner scanner= new Scanner(s);
+        //scanner.setDelimiter(",");
         int delim=s.indexOf(',')+1;
         nombre= s.substring(0,s.indexOf(','));
         s.indexOf(',');
@@ -40,9 +65,24 @@ public class NonogramaAlmacenado {
         dificultad= s.substring(delim,s.indexOf(',',delim));
         delim=s.indexOf(',',delim)+1;
         archivo =  s.substring(delim,s.length());
+        delim=s.indexOf(',',delim)+1;
+        intentosCasilla=Integer.parseInt(stringColumnas);
+        delim=s.indexOf(',',delim)+1;
         
         
         
+        
+    }
+    
+    public String presentacionParaCliente(){
+        String resultado=new String();
+        resultado="Identificador: "+id+" Nombre: "+nombre+
+                " Dimension: "+numFilas+"x"+numColumnas+
+                " dificultad"+dificultad+
+                "Intentos jugando por casillas: "+intentosCasilla+
+                "Intentos jugando por tablero: "+intentosTablero;
+        
+        return resultado;
     }
     public Nonograma leer() throws IOException{
         BufferedReader lector=Files.newBufferedReader(Paths.get(archivo));

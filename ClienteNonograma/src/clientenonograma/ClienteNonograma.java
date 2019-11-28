@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -53,9 +54,22 @@ public class ClienteNonograma {
                         
                         System.out.println("Conexión con el servidor aceptada");
                         
-                        Mensaje respuesta = interfaz.enviarMensaje("Hola&preet");
+                        Mensaje comando= new Mensaje("hola",new ArrayList());
+                        Mensaje respuesta = interfaz.enviarMensaje(comando);
                         System.out.println("Respuesta: del servidor: "+respuesta.cabeza);
+                        Scanner scanner=new Scanner(System.in);
                         
+                        
+                        while(comando.cabeza!="Salir"){
+                            System.out.println("Introduce el mensaje");
+                            String nuevoMensaje =scanner.nextLine();
+                            comando= new Mensaje(nuevoMensaje);
+                            
+                            respuesta = interfaz.enviarMensaje(comando);
+                            System.out.println("Respuesta: del servidor: "+respuesta);
+                        
+                         
+                        }
 			/*for(int i=0;i<bytesLeidos;i++){
 				System.out.print((char)buferRecepcion[i]);
 			}*/

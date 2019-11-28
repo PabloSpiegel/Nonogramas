@@ -16,8 +16,8 @@ public class Mensaje {
     public ArrayList<String> argumentos;
     
     public Mensaje(String cabeza, ArrayList<String> argumentos){
-        cabeza= cabeza;
-        /*cabeza?*/
+        this.cabeza= cabeza;
+        this.argumentos=argumentos;
     }
     
     public Mensaje(String linea){

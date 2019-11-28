@@ -67,8 +67,35 @@ public class SesionServidor {
         
       if(mensajeHola.cabeza.compareTo("Hola")!=0){
           System.out.println("error en el mensaje, se esperaba hola");
+          
+      interfaz.enviarRespuesta("Error&");
       }
       interfaz.enviarRespuesta("Buenas&");
+      
+      boolean seguir=true;
+      while(seguir){
+          Mensaje mensaje=interfaz.esperarMensaje(), respuesta=null;
+          switch(mensaje.cabeza){
+              case "VerDificultades":
+                  respuesta=new Mensaje("ListaDificultades",dificultades);
+                  break;
+              case "ListarNonogramas":
+                  respuesta=new Mensaje("ListaNonogramas&perro|gato|gusano");
+                  break;
+              case "ListarPorDificultad":
+                  respuesta=new Mensaje("ListaNonograma&facil|cuphead");
+                  break;
+              case "Salir":
+                  respuesta=new Mensaje("Adios&");
+                  seguir=false;
+                  break;
+          }
+          
+          interfaz.enviarRespuesta(respuesta);
+      
+      
+      
+      }
       
       
       
