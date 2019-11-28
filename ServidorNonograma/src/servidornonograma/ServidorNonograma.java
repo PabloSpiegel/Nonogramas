@@ -23,7 +23,6 @@ public class ServidorNonograma {
         ServerSocket socketServidor;
         
         try{
-            
             socketServidor = new ServerSocket(port);
             do {
 				
@@ -37,12 +36,14 @@ public class ServidorNonograma {
                                 } catch (IOException e) {
                                     System.out.println("Error:   no   se   pudo   aceptar   la conexión solicitada");
                                 }
-                                
+                                System.out.println("Iniciada conexión con un cliente");
 				// Creamos un objeto de la clase ProcesadorYodafy, pasándole como 
 				// argumento el nuevo socket, para que realice el procesamiento
 				// Este esquema permite que se puedan usar hebras más fácilmente.
-				SesionNonograma sesion=new SesionNonograma(socketServicio);
-				sesion.empezarSesion();
+				SesionServidor sesion=new SesionServidor(socketServicio);
+                                sesion.empezarSesion();
+				//sesion.empezarSesion();
+                                    System.out.println("Terminada la conexión con el cliente");
 				
 			} while (true);
         }catch (IOException e) {

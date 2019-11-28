@@ -6,6 +6,7 @@
 package clientenonograma;
 
 import Nonograma.Casilla;
+import Nonograma.Mensaje;
 import Nonograma.Nonograma;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -39,6 +41,7 @@ public class ClienteNonograma {
 	// Socket para la conexión TCP
 	Socket socketServicio=null;
         
+        System.out.println("iniciamos la conexion con el servidor");
         InterfazConServidor interfaz= null;
         try {
 			// Creamos un socket que se conecte a "hist" y "port":
@@ -47,11 +50,26 @@ public class ClienteNonograma {
 			//////////////////////////////////////////////////////			
 			socketServicio= new Socket (host, port);
 			//InputStream
-                        
                         interfaz = new InterfazConServidor(socketServicio);
                         
-                        interfaz.enviarMensaje("Hola&");
+                        System.out.println("Conexión con el servidor aceptada");
                         
+                        Mensaje comando= new Mensaje("Hola",new ArrayList());
+                        Mensaje respuesta = interfaz.enviarMensaje(comando);
+                        System.out.println("Respuesta: del servidor: "+respuesta.cabeza);
+                        Scanner scanner=new Scanner(System.in);
+                        
+                        
+                        while(comando.cabeza!="Salir"){
+                            System.out.println("Introduce el mensaje");
+                            String nuevoMensaje =scanner.nextLine();
+                            comando= new Mensaje(nuevoMensaje);
+                            
+                            respuesta = interfaz.enviarMensaje(comando);
+                            System.out.println("Respuesta: del servidor: "+respuesta);
+                        
+                         
+                        }
 			/*for(int i=0;i<bytesLeidos;i++){
 				System.out.print((char)buferRecepcion[i]);
 			}*/
