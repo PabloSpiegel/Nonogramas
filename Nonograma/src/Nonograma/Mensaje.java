@@ -15,6 +15,11 @@ public class Mensaje {
     public String cabeza;
     public ArrayList<String> argumentos;
     
+    public Mensaje(){
+        cabeza=new String();
+        argumentos=new ArrayList();
+    }
+    
     public Mensaje(String cabeza, ArrayList<String> argumentos){
         this.cabeza= cabeza;
         this.argumentos=argumentos;
@@ -22,19 +27,22 @@ public class Mensaje {
     
     public Mensaje(String linea){
         int indice = linea.indexOf('&');
+        if(indice==-1){
+        cabeza=linea;
+        argumentos=new ArrayList();
+        }
+        else{
         cabeza = linea.substring(0,indice);
         int siguiente = linea.indexOf('|');
         argumentos = new ArrayList(); 
         String arg;
-        
-        
     while (siguiente != -1){
         if(siguiente== -1){
-        arg= linea.substring(indice+1, linea.length());
-        argumentos.add(arg);
+            arg= linea.substring(indice+1, linea.length());
+            argumentos.add(arg);
         }
         else{
-        argumentos.add(linea.substring(indice+1, siguiente));
+            argumentos.add(linea.substring(indice+1, siguiente));
         }
         
         indice = siguiente;
@@ -44,6 +52,8 @@ public class Mensaje {
         if(linea.length()-1>indice){
             arg= linea.substring(indice+1, linea.length());
             argumentos.add(arg);
+        }
+        
         }
     }
     

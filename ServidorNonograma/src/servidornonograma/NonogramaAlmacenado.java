@@ -78,9 +78,9 @@ public class NonogramaAlmacenado {
         String resultado=new String();
         resultado="Identificador: "+id+" Nombre: "+nombre+
                 " Dimension: "+numFilas+"x"+numColumnas+
-                " dificultad"+dificultad+
-                "Intentos jugando por casillas: "+intentosCasilla+
-                "Intentos jugando por tablero: "+intentosTablero;
+                " dificultad: "+dificultad+
+                " Intentos jugando por casillas: "+intentosCasilla+
+                " Intentos jugando por tablero: "+intentosTablero;
         
         return resultado;
     }
