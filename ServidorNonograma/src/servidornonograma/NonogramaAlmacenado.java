@@ -34,11 +34,11 @@ public class NonogramaAlmacenado {
         
         Scanner scanner= new Scanner(s);
         scanner.useDelimiter(",");
-        nombre= scanner.nextLine();
+        nombre= scanner.next();
         numFilas=scanner.nextInt();
         numColumnas=scanner.nextInt();
-        dificultad= scanner.nextLine();
-        archivo =  scanner.nextLine();
+        dificultad= scanner.next();
+        archivo =  scanner.next();
         intentosCasilla=scanner.nextInt();
         intentosTablero=scanner.nextInt();
         
