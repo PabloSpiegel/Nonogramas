@@ -57,6 +57,10 @@ public class SesionServidor {
         }
         return dificultades;
     }
+    
+    private ArrayList<String> listar(String dificultad){
+         return null;
+    }
     public void empezarSesion() throws IOException {
         
       
@@ -68,7 +72,7 @@ public class SesionServidor {
       if(mensajeHola.cabeza.compareTo("Hola")!=0){
           System.out.println("error en el mensaje, se esperaba hola");
           
-      interfaz.enviarRespuesta("Error&");
+      interfaz.enviarRespuesta("<rror&");
       }
       interfaz.enviarRespuesta("Buenas&");
       
@@ -80,7 +84,7 @@ public class SesionServidor {
                   respuesta=new Mensaje("ListaDificultades",dificultades);
                   break;
               case "ListarNonogramas":
-                  respuesta=new Mensaje("ListaNonogramas&perro|gato|gusano");
+                  respuesta=listar("");
                   break;
               case "ListarPorDificultad":
                   respuesta=new Mensaje("ListaNonograma&facil|cuphead");
@@ -89,6 +93,9 @@ public class SesionServidor {
                   respuesta=new Mensaje("Adios&");
                   seguir=false;
                   break;
+              default:
+                  respuesta=new Mensaje("Error&argumentos no esperados");
+                  
           }
           
           interfaz.enviarRespuesta(respuesta);

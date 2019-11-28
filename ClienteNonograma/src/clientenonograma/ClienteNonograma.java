@@ -54,7 +54,7 @@ public class ClienteNonograma {
                         
                         System.out.println("Conexión con el servidor aceptada");
                         
-                        Mensaje comando= new Mensaje("hola",new ArrayList());
+                        Mensaje comando= new Mensaje("Hola",new ArrayList());
                         Mensaje respuesta = interfaz.enviarMensaje(comando);
                         System.out.println("Respuesta: del servidor: "+respuesta.cabeza);
                         Scanner scanner=new Scanner(System.in);
