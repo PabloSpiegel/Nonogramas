@@ -59,7 +59,18 @@ public class SesionServidor {
     }
     
     private ArrayList<String> listar(String dificultad){
-         return null;
+        boolean filtrar=!dificultad.isEmpty(); 
+        ArrayList<String> lista=new ArrayList();
+        for(NonogramaAlmacenado nono: listaNonogramas){
+             if(filtrar&& nono.dificultad.compareTo(dificultad)==0){
+                     lista.add(nono.presentacionParaCliente());
+                 
+             }
+             if(!filtrar){
+                 lista.add(nono.presentacionParaCliente());
+             }
+         }
+        return lista;
     }
     public void empezarSesion() throws IOException {
         
@@ -78,16 +89,19 @@ public class SesionServidor {
       
       boolean seguir=true;
       while(seguir){
-          Mensaje mensaje=interfaz.esperarMensaje(), respuesta=null;
+          Mensaje mensaje=interfaz.esperarMensaje(), respuesta=new Mensaje();
           switch(mensaje.cabeza){
               case "VerDificultades":
                   respuesta=new Mensaje("ListaDificultades",dificultades);
                   break;
-              case "ListarNonogramas":
-                  respuesta=listar("");
-                  break;
-              case "ListarPorDificultad":
-                  respuesta=new Mensaje("ListaNonograma&facil|cuphead");
+              
+              case "Listar":
+                  if(mensaje.argumentos.isEmpty()){
+                     mensaje.argumentos.add("");
+                  }
+                  respuesta.cabeza="ListaDeNonogramas";
+                  respuesta.argumentos=listar(mensaje.argumentos.get(0));
+                  
                   break;
               case "Salir":
                   respuesta=new Mensaje("Adios&");
